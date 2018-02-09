@@ -1,0 +1,9 @@
+## SETOR PRIMARIO
+
+#host DISP001 {hardware ethernet :::::; fixed-address 10.4.0.10;} # nome
+#host DISP002 {hardware ethernet :::::; fixed-address 10.4.0.11;}
+
+## SETOR SECUNDARIO
+
+#host DISP003 {hardware ethernet :::::; fixed-address 10.4.0.13;}
+#host DISP004 {hardware ethernet :::::; fixed-address 10.4.0.14;}

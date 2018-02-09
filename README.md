@@ -7,12 +7,12 @@ https://help.ubuntu.com/community/isc-dhcp-server
 ## Seriços
 
 - [Adiconar IP](#adiconar-ip)
-- [Listar  Emprestimos](#listar-emprestimo)
-- Remover maquinas
+- [Listar Emprestimos](#listar-emprestimo)
+- Remover MAC
 
 ### Adicionar IP
 
-Proposta inicial e disponibilizar ip a partir de um cadastro no formulario referenciado pelo mac.
+A proposta inicial é disponibilizar IP estático a partir de um cadastro em formulário referenciado pelo número MAC do dispositivo atrelando-o a um número IP.
 
 ```
 GET /api/dhcp.php?action=add-ip&name=:name&mac=:mac
@@ -22,8 +22,8 @@ Parametros:
 
 | Name | Tipo | Descrição |
 |-|-|-|
-| :name | String | Nome da ... |
-| :mac | String | Um mac... |
+| :name | String | Nome do Usuário |
+| :mac | String | Número MAC do dispotivo |
 
 Exemplo:
 
@@ -35,7 +35,7 @@ Em caso de sucesso:
 
 ```js
 {
-  "status": "Computad..."
+  "status": "Dispositivo Cadastrado com Sucesso"
 }
 ```
 
@@ -43,7 +43,7 @@ Em caso de erro:
 
 ```js
 {
-  "status": "Param errados..."
+  "status": "MAC ou IP não válido"
 }
 ```
 
@@ -53,7 +53,7 @@ Este serviço é baseado no seguinte commando
 $ sed thiago 07:03:15:c4:18:d8 /var/lib/dhcp3/dhcpd.conf
 ```
 
-Para validar a execução deste serviço no exemplo acima, vá ate o `/var/lib/dhcp3/dhcpd.conf` e verifique se foi adicionado a linha `xpto thiago mac`.
+Para validar a execução deste serviço no exemplo acima, acesse o arquivo `/var/lib/dhcp3/dhcpd.conf` e verifique se foi adicionada a linha `xpto thiago mac`.
 
 ### Listar Emprestimos
 
@@ -85,7 +85,7 @@ Em caso de erro:
 
 ```js
 {
-  "status": "Error ao obter os endereços"
+  "status": "Error ao obter o(s) endereço(s) IP"
 }
 ```
 
@@ -95,4 +95,4 @@ Este serviço é baseado no seguinte commando:
 $ cat /var/lib/dhcp/dhcpd.leases
 ```
 
-Para validar a execução deste serviço no exemplo acima, vá ate o arquivo `/var/lib/dhcp/dhcpd.leases` e verifique se foi coincide com o JSON gerado em caso de sucesso.
+Para validar a execução deste serviço do exemplo acima, acesse o arquivo `/var/lib/dhcp/dhcpd.leases` e verifique se coincide com o JSON gerado quando em caso de sucesso.

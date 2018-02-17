@@ -33,5 +33,5 @@ echo "Vagrant finish installing"
 
 echo "Installing DHCP Server"
 sudo apt-get install isc-dhcp-server
-sudo cp /var/www/html/dhcpd.conf /etc/dhcp/dhcpd.conf
+sudo cp /var/www/html/scripts/dhcpd.conf /etc/dhcp/dhcpd.conf
 sudo service isc-dhcp-server restart

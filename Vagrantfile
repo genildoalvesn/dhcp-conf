@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
     dhcpserver.vm.provider "virtualbox" do |vb|
       vb.name = "dhcpserver"
     end
-    dhcpserver.vm.provision "shell", path: "./server-install.sh"
+    dhcpserver.vm.provision "shell", path: "scripts/server-install.sh"
   end
 
   config.vm.define "dhcpclient" do |dhcpclient|

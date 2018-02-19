@@ -6,6 +6,7 @@ $json = '';
 
 if ($action == 'leases') {
   $json = json_encode(getLeases());
+
 } elseif ($action == 'add-ip') {
   $comment = $_GET['comment'] ?? null;
   $mac = $_GET['mac'] ?? null;
@@ -19,7 +20,8 @@ if ($action == 'leases') {
   } else {
     $json = json_encode(['status' => 'parametros invalidos']);
   }
-} elseif ($ation == 'list-ips') {
+
+} elseif ($action == 'list-ips') {
   if ($action) {
     $json = json_encode(getLeases());
   } else {
@@ -27,5 +29,5 @@ if ($action == 'leases') {
   }
 }
 
-// header('Content-type: application/json; charset=UTF-8');
-// echo $json;
+header('Content-type: application/json; charset=UTF-8');
+echo $json;

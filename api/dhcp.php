@@ -13,9 +13,15 @@ if ($action == 'leases') {
   $ip = $_GET['ip'] ?? null;
   $setor = $_GET['setor'] ?? null;
 
-  if ($comment && $mac && $host && $ip && $setor) {
+  if ($action && $comment && $mac && $host && $ip && $setor) {
     addIp($comment, $mac, $host, $ip, $setor);
     $json = json_encode(['status' => 'host adicionado com sucesso']);
+  } else {
+    $json = json_encode(['status' => 'parametros invalidos']);
+  }
+} elseif ($ation == 'list-ips') {
+  if ($action) {
+    $json = json_encode(getLeases());
   } else {
     $json = json_encode(['status' => 'parametros invalidos']);
   }

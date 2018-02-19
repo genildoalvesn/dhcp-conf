@@ -14,10 +14,11 @@ function addIp($comment, $mac, $host, $ip, $setor) {
 function getLeases() {
   $leasesArray = [];
 
-  $command = 'cat /var/lib/dhcp/dhcpd.leases';
-  $leasesContent = shell_exec($command);
-  // $leasesContent = file_get_contents('/var/lib/dhcp/dhcpd.leases');
+  $leasesContent = file_get_contents('/var/lib/dhcp/dhcpd.leases');
+  $dhcpdContent = file_get_contents('/etc/dhcp/dhcpd.conf');
+
   echo $leasesContent;
+  echo $dhcpdContent;
 
   return $leasesArray;
 }

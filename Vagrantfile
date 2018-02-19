@@ -15,13 +15,21 @@ Vagrant.configure(2) do |config|
     dhcpserver.vm.provision "shell", path: "scripts/server-install.sh"
   end
 
-  config.vm.define "dhcpclient" do |dhcpclient|
-    dhcpclient.vm.hostname = "dhcpclient"
-    dhcpclient.vm.box = "ubuntu/trusty64"
-    dhcpclient.vm.network "private_network", type: "dhcp", virtualbox__intnet: "RedeVagrant"
-    dhcpclient.vm.provider "virtualbox" do |vb|
-      vb.name = "dhcpclient"
+  config.vm.define "dhcpclient1" do |dhcpclient1|
+    dhcpclient1.vm.hostname = "dhcpclient1"
+    dhcpclient1.vm.box = "ubuntu/trusty64"
+    dhcpclient1.vm.network "private_network", type: "dhcp", mac: "0800278B80A3", virtualbox__intnet: "RedeVagrant"
+    dhcpclient1.vm.provider "virtualbox" do |vb|
+      vb.name = "dhcpclient1"
     end
   end
 
+  config.vm.define "dhcpclient2" do |dhcpclient2|
+    dhcpclient2.vm.hostname = "dhcpclient2"
+    dhcpclient2.vm.box = "ubuntu/trusty64"
+    dhcpclient2.vm.network "private_network", type: "dhcp", mac: "0800278B80A4", virtualbox__intnet: "RedeVagrant"
+    dhcpclient2.vm.provider "virtualbox" do |vb|
+      vb.name = "dhcpclient2"
+    end
+  end
 end

@@ -8,13 +8,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Listar IPs Reservados</title>
+    <link href="css/master.css" rel="stylesheet">
+
+    <title>DHCP Config</title>
   </head>
   <body>
-    <div class="container">
-      <h1>DHCP Conf</h1>
+    <?php include("navbar.php") ?>
 
-      <h2>Listar IPs</h2>
+    <div class="container">
+      <h2>List IPs</h2>
       <table class="table">
         <thead>
           <tr>

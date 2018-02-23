@@ -8,12 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Reservar IP</title>
+    <link href="css/master.css" rel="stylesheet">
+
+    <title>DHCP Config</title>
   </head>
   <body>
-    <div class="container">
-      <h1>DHCP Conf</h1>
+    <?php include("navbar.php") ?>
 
+    <div class="container">
       <h2>Alocar Endereço IP</h2>
       <form>
         <div class="row">
@@ -64,13 +66,9 @@
 
         const url = `/api/dhcp.php?action=add-ip&comment=${comment.value}&mac=${mac.value}&host=${host.value}&ip=${ip.value}&setor=${setor.value}`
 
-        fetch(url)
+        fetch(url).
+          then(function(res){ location.href = 'index.html'})
       })
-
-
-
-
-
     </script>
   </body>
 </html>

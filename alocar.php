@@ -53,22 +53,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-      const submit = document.querySelector('#submit')
-      const host = document.querySelector('#host')
-      const setor = document.querySelector('#setor')
-      const mac = document.querySelector('#mac')
-      const ip = document.querySelector('#ip')
-      const comment = document.querySelector('#comment')
-
-      submit.addEventListener('click', function(event) {
-        event.preventDefault()
-
-        const url = `/api/dhcp.php?action=add-ip&comment=${comment.value}&mac=${mac.value}&host=${host.value}&ip=${ip.value}&setor=${setor.value}`
-
-        fetch(url).
-          then(function(res){ location.href = 'index.html'})
-      })
-    </script>
+    <script src="js/alocar.js"><script>
   </body>
 </html>

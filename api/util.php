@@ -1,14 +1,22 @@
 <?php
 
 function addIp($comment, $mac, $host, $ip, $setor) {
-  $connection = ssh2_connect('localhost', 22);
-  ssh2_auth_password($connection, 'vagrant', 'vagrant');
-
   $addIp = "host ${host} {hardware ethernet ${mac}; fixed-address ${ip};} # ${comment} (${setor})";
   $command = "echo \"${addIp}\" | sudo tee --append /etc/dhcp/dhcpd.conf";
 
-  ssh2_exec($connection, $command);
-  ssh2_exec($connection, 'sudo service isc-dhcp-server restart');
+  ssh_commands([
+   $command,
+   'sudo service isc-dhcp-server restart'
+  ]);
+}
+
+function rmIp($ip) {
+  $command = "sudo sed -i '/${ip}/d' /etc/dhcp/dhcpd.conf";
+
+  ssh_commands([
+   $command,
+   'sudo service isc-dhcp-server restart'
+  ]);
 }
 
 function getLeases() {
@@ -50,4 +58,13 @@ function getLeases() {
   }
 
   return $leasesArray;
+}
+
+
+function ssh_commands($commands) {
+  $connection = ssh2_connect('localhost', 22);
+  ssh2_auth_password($connection, 'vagrant', 'vagrant');
+  foreach ($commands as $command) {
+    ssh2_exec($connection, $command);
+  }
 }

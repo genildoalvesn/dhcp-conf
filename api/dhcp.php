@@ -4,10 +4,7 @@ require_once('util.php');
 $action = $_GET['action'] ?? null;
 $json = '';
 
-if ($action == 'leases') {
-  $json = json_encode(getLeases());
-
-} elseif ($action == 'add-ip') {
+if ($action == 'add-ip') {
   $comment = $_GET['comment'] ?? null;
   $mac = $_GET['mac'] ?? null;
   $host = $_GET['host'] ?? null;
@@ -17,6 +14,16 @@ if ($action == 'leases') {
   if ($action && $comment && $mac && $host && $ip && $setor) {
     addIp($comment, $mac, $host, $ip, $setor);
     $json = json_encode(['status' => 'host adicionado com sucesso']);
+  } else {
+    $json = json_encode(['status' => 'parametros invalidos']);
+  }
+
+} elseif ($action == 'rm-ip') {
+  $ip = $_GET['ip'] ?? null;
+
+  if ($ip) {
+    rmIp($ip);
+    $json = json_encode(['status' => 'host removido com sucesso']);
   } else {
     $json = json_encode(['status' => 'parametros invalidos']);
   }

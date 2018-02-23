@@ -4,6 +4,8 @@
 
 https://help.ubuntu.com/community/isc-dhcp-server
 
+![Tela de Alocar IP](assets/alocar.png)
+
 ## Seriços
 
 - [Adicionar IP](#adiconar-ip)

@@ -6,13 +6,13 @@ https://help.ubuntu.com/community/isc-dhcp-server
 
 ## Seriços
 
-- [Adiconar IP](#adiconar-ip)
+- [Adicionar IP](#adiconar-ip)
 - [Listar Emprestimos](#listar-emprestimo)
-- Remover MAC
+- [Remover MAC](#remover-mac)
 
 ### Adicionar Host
 
-A proposta inicial é disponibilizar IP estático a partir de um cadastro em formulário referenciado pelo número MAC do dispositivo atrelando-o a um número IP.
+Tem como proposta inicial, disponibilizar IPs estáticos a partir de um cadastro em formulário referenciado pelo número MAC do dispositivo, atrelando-o a um número IP.
 
 ```
 GET /api/dhcp.php?action=add-ip&comment=:comment&mac=:mac&ip=:ip&host=:host
@@ -22,8 +22,10 @@ Parametros:
 
 | Name | Tipo | Descrição |
 |-|-|-|
-| :name | String | Nome do Usuário |
+| :comment | String | Nome do Usuário |
 | :mac | String | Número MAC do dispotivo |
+| :ip | String | Número IP do dispotivo |
+| :host | String | Identificação do dispotivo na LAN |
 
 Exemplo:
 
@@ -47,7 +49,7 @@ Em caso de erro:
 }
 ```
 
-Este serviço é baseado no seguinte commando
+Este serviço é baseado no seguinte commando:
 
 ```
 $ echo "host DISP001 {hardware ethernet 08:00:27:8B:80:A3; fixed-address 192.168.1.10;} # thiago (primario)" | sudo tee --append /etc/dhcp/dhcpd.conf
@@ -139,7 +141,7 @@ Em caso de erro:
 }
 ```
 
-Este serviço é baseado no seguinte commando
+Este serviço é baseado no seguinte commando:
 
 ```
 $ sed -n '/^mac/d' arquivo.txt/etc/dhcp/dhcpd.conf & sed -n '/^nome/d' arquivo.txt/etc/dhcp/dhcpd.conf
@@ -147,8 +149,8 @@ $ sudo service isc-dhcp-server restart
 
 ```
 
-Para validar a execução deste serviço no exemplo acima, acesse o arquivo `/etc/dhcp/dhcpd.conf`
-e verifiqque se mac foi removido com seguinte comando
+Para validar a execução deste serviço do exemplo acima, acesse o arquivo `/etc/dhcp/dhcpd.conf`
+e verifique se o MAC foi removido com seguinte comando:
 
 ```
 $ cat /etc/dhcp/dhcpd.conf

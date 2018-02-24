@@ -10,6 +10,6 @@ submit.addEventListener('click', function(event) {
 
   const url = `/api/dhcp.php?action=add-ip&comment=${comment.value}&mac=${mac.value}&host=${host.value}&ip=${ip.value}&setor=${setor.value}`
 
-  fetch(url).
-    then(function(res){ location.href = 'index.html'})
+  fetch(url)
+    .then(function(res){ location.href = 'index.php'})
 })
